@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 export function CardPizza({ name, img, ingredients, price }) {
   return (
     <>
@@ -21,7 +22,7 @@ export function CardPizza({ name, img, ingredients, price }) {
             </div>
           </li>
           <li className="list-group-item text-center ">
-            <h5 className="mb-4">Precio: {price}</h5>
+            <h5 className="mb-4">Precio: ${price}</h5>
 
             <div className="d-flex justify-content-between">
               <a href="" className="btn btn-outline-dark">
