@@ -1,0 +1,14 @@
+.banner {
+  height: 500px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url(https://i.imgur.com/XBEKUJK.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pizzas {
+  margin: 0 auto;
+}
+.img-pizza {
+  object-fit: cover;
+}
