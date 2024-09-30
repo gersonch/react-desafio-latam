@@ -1,5 +1,6 @@
 import { CardPizza } from "./CardPizza";
 import "../App.css";
+import { Banner } from "./Banner";
 
 function formatPrice(price) {
   return new Intl.NumberFormat("es-CL").format(price);
@@ -9,14 +10,7 @@ export function Home() {
   return (
     <>
       <main className="">
-        <div className="banner d-flex justify-content-center align-items-center text-center text-white">
-          <div className="border-bottom w-75 p-5">
-            <div>
-              <h1>¡Pizzeria Mamma Mia!</h1>
-              <p>Tenemos las mejores Pizzas que podrás encontrar</p>
-            </div>
-          </div>
-        </div>
+        <Banner />
         <section className="pizzas w-75">
           <div className="m-5 row">
             <div className="col-12 col-md-4 mb-4 d-flex">
