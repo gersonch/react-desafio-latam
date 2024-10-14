@@ -1,31 +1,31 @@
-import { useState } from "react";
-import { Banner } from "./Banner";
-
-export function Register() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+import { useState } from 'react'
+//import { Banner } from '../components/Banner'
+function Register() {
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   function handlePasswordChange(e) {
-    setPassword(e.target.value);
+    setPassword(e.target.value)
   }
 
   function handleConfirmPassword(e) {
-    setConfirmPassword(e.target.value);
+    setConfirmPassword(e.target.value)
   }
 
   function checkInfo(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     if (password === confirmPassword) {
-      alert("Has creado tu cuenta exitosamente");
+      alert('Has creado tu cuenta exitosamente')
     } else {
-      alert("Verifica tus datos. Las contraseñas deben ser iguales.");
+      alert('Verifica tus datos. Las contraseñas deben ser iguales.')
     }
   }
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-start my-5">
+      <div className="d-flex flex-column justify-content-start align-items-center mt-5 gap-4 min-vh-100">
+        <h2>Registrate aquí</h2>
         <form className="w-25" onSubmit={checkInfo}>
           <div className="mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -71,5 +71,7 @@ export function Register() {
         </form>
       </div>
     </>
-  );
+  )
 }
+
+export default Register

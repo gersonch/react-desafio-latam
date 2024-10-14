@@ -1,14 +1,16 @@
+import { Link } from 'react-router-dom'
+
 export default function Navbar() {
-  const total = 25000;
-  const totalFormateado = total.toLocaleString("es-CL"); // Español (Chile)
-  const token = false;
+  const total = 0
+  const totalFormateado = total.toLocaleString('es-CL') // Español (Chile)
+  const token = false
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             Pizzeria Mamma Mia
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,25 +25,27 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" to="/">
                   🍕Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  {token ? "🔓Profile" : "🔐Login"}
-                </a>
+                <Link className="nav-link active" to="/login">
+                  {token ? '🔓Profile' : '🔐Login'}
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="#">
-                  {token ? "🔓Logout" : "🔐Register"}
-                </a>
+                <Link className="nav-link active" to="/register">
+                  {token ? '🔓Logout' : '🔐Register'}
+                </Link>
               </li>
             </ul>
           </div>
-          <button>🛒 Total ${totalFormateado}</button>
+          <Link to="/cart">
+            <button>🛒 Total ${totalFormateado}</button>
+          </Link>
         </div>
       </nav>
     </>
-  );
+  )
 }

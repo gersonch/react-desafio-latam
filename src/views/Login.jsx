@@ -1,33 +1,33 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-export function Login() {
-  const emailKey = "example@example.com";
-  const key = "123456";
+function Login() {
+  const emailKey = 'example@example.com'
+  const key = '123456'
 
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
 
   function handleEmail(e) {
-    setEmail(e.target.value);
+    setEmail(e.target.value)
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value);
+    setPassword(e.target.value)
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     if (email == emailKey && password == key) {
-      alert("Has ingresado correctamente");
+      alert('Has ingresado correctamente')
     } else {
-      alert("Datos incorrectos. Intenta nuevamente");
+      alert('Datos incorrectos. Intenta nuevamente')
     }
   }
   return (
     <>
       <h2 className="text-center my-5">Ingresa a tu cuenta</h2>
-      <div className="d-flex justify-content-center align-items-start my-5 py-5">
+      <div className="d-flex justify-content-center align-items-start min-vh-100">
         <form className="w-25" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -55,7 +55,7 @@ export function Login() {
               onChange={handlePassword}
               required
             />
-            <span id="passwordHelpInline" class="form-text">
+            <span id="passwordHelpInline" className="form-text">
               Debe tener al menos 6 caracteres.
             </span>
           </div>
@@ -65,5 +65,7 @@ export function Login() {
         </form>
       </div>
     </>
-  );
+  )
 }
+
+export default Login
