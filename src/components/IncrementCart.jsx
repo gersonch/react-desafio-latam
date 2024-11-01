@@ -6,7 +6,7 @@ const IncrementCart = ({ pizza }) => {
   const { addToCart } = useContext(CartContext)
 
   return (
-    <button className="btn btn-outline-dark" onClick={() => addToCart(pizza)}>
+    <button className="btn btn-dark" onClick={() => addToCart(pizza)}>
       Añadir 🛒
     </button>
   )
