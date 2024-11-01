@@ -9,23 +9,27 @@ import Cart from './views/Cart'
 import Pizza from './views/Pizza'
 import NotFound from './views/NotFound'
 import Profile from './views/Profile'
+import CartProvider from './context/CartContext'
+//import CartProvider from './context/CartContext'
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="contain">
       {' '}
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/pizza/:id" element={<Pizza />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/404" element={<NotFound />} />
-        <Route path={'*'} element={<Navigate to="/404" />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/:id" element={<Pizza />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path={'*'} element={<Navigate to="/404" />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </div>
   )
 }

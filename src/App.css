@@ -5,6 +5,11 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.contain {
+  display: grid;
+  min-height: 100dvh;
+  grid-row: auto 1fr auto;
+}
 
 .pizzas {
   margin: 0 auto;

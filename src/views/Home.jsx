@@ -6,6 +6,9 @@ import '../App.css'
 //import { pizzas } from "./pizzas";
 import { formatPrice } from '../components/format.js'
 import { fetchData } from '../components/fetch.js'
+import IncrementCart from '../components/IncrementCart.jsx'
+
+//import IncrementCart from '../components/IncrementCart.jsx'
 
 function Home() {
   const [data, setData] = useState([])
@@ -36,6 +39,7 @@ function Home() {
                   ingredients={pizza.ingredients.join(', ')}
                   img={pizza.img}
                   id={pizza.id}
+                  add={<IncrementCart pizza={pizza} />}
                 />
               </div>
             ))}

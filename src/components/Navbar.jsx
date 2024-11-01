@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 export default function Navbar() {
-  const total = 0
+  const { total } = useContext(CartContext)
   const totalFormateado = total.toLocaleString('es-CL') // Español (Chile)
   const token = false
   return (

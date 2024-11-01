@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
-export function CardPizza({ id, name, img, ingredients, price }) {
+export function CardPizza({ id, name, img, ingredients, price, add }) {
   return (
     <>
       <div className="card text-center" style={{ width: '22rem' }}>
@@ -30,7 +30,7 @@ export function CardPizza({ id, name, img, ingredients, price }) {
               <Link to={`/pizza/${id}`} className="btn btn-outline-dark">
                 Ver mas 👀
               </Link>
-              <a className="btn btn-dark">Añadir 🛒</a>
+              {add}
             </div>
           </li>
         </ul>

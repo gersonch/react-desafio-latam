@@ -27,7 +27,7 @@ function Login() {
   return (
     <>
       <h2 className="text-center my-5">Ingresa a tu cuenta</h2>
-      <div className="d-flex justify-content-center align-items-start min-vh-100">
+      <div className="d-flex justify-content-center align-items-start">
         <form className="w-25" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label">
