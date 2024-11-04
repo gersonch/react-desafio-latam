@@ -17,3 +17,6 @@
 .img-pizza {
   object-fit: cover;
 }
+.disable {
+  background: #222;
+}

@@ -1,9 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
 import { formatPrice } from '../components/format'
+import { UserContext } from '../context/UserContext'
 
 export default function Cart() {
   const { cart, total, addToCart, decrement } = useContext(CartContext)
+  const { token } = useContext(UserContext) // Llama a useContext para token en el nivel superior
+  const [stylePay, setStylePay] = useState('btn btn-primary')
 
   const handleIncrement = (id) => {
     addToCart(cart.find((item) => item.id === id))
@@ -11,6 +14,12 @@ export default function Cart() {
 
   const handleDecrement = (id) => {
     decrement(id)
+  }
+
+  const handleUser = () => {
+    if (!token) {
+      setStylePay('btn btn-dark') // Agrega la clase "enabled" si hay un token
+    }
   }
 
   return (
@@ -54,6 +63,9 @@ export default function Cart() {
       </section>
       <section className="border-top pt-3">
         <h4 className="text-end">Total: ${formatPrice(total)}</h4>
+        <button className={stylePay} onClick={handleUser}>
+          Pagar
+        </button>
       </section>
     </main>
   )
