@@ -16,12 +16,34 @@ export default function Cart() {
     decrement(id)
   }
 
-  const handleUser = () => {
+  const handleCheckout = async () => {
     if (!token) {
       setStylePay('btn btn-dark')
-      alert('debes iniciar sesion para comprar')
+      alert('Debes iniciar sesión para proceder con la compra')
     } else {
-      alert('pago con exito')
+      try {
+        // Realizar la solicitud de pago
+        const response = await fetch('http://localhost:5000/api/checkouts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            cart,
+          }),
+        })
+
+        if (response.ok) {
+          alert('Pago realizado con éxito')
+        } else {
+          const errorData = await response.json()
+          alert(`Error en el pago: ${errorData.message}`)
+        }
+      } catch (error) {
+        console.error('Error al realizar el pago:', error)
+        alert('Error en el servidor. Intente nuevamente más tarde.')
+      }
     }
   }
 
@@ -66,7 +88,7 @@ export default function Cart() {
       </section>
       <section className="border-top pt-3">
         <h4 className="text-end">Total: ${formatPrice(total)}</h4>
-        <button className={stylePay} onClick={handleUser}>
+        <button className={stylePay} onClick={handleCheckout}>
           Pagar
         </button>
       </section>
