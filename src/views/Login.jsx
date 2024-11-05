@@ -1,28 +1,25 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '../context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-  const emailKey = 'example@example.com'
-  const key = '123456'
-
+  // const emailKey = 'example@example.com'
+  // const key = '123456'
+  const { login, token } = useContext(UserContext)
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const navigate = useNavigate()
 
-  function handleEmail(e) {
-    setEmail(e.target.value)
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value)
-  }
+  useEffect(() => {
+    if (token) {
+      navigate('/profile')
+    }
+  }, [token, navigate])
 
   function handleSubmit(e) {
     e.preventDefault()
 
-    if (email == emailKey && password == key) {
-      alert('Has ingresado correctamente')
-    } else {
-      alert('Datos incorrectos. Intenta nuevamente')
-    }
+    login(email, password)
   }
   return (
     <>
@@ -39,7 +36,7 @@ function Login() {
               id="exampleFormControlInput1"
               placeholder="name@example.com"
               value={email}
-              onChange={handleEmail}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -52,7 +49,7 @@ function Login() {
               className="form-control"
               id="exampleInputPassword1"
               value={password}
-              onChange={handlePassword}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <span id="passwordHelpInline" className="form-text">

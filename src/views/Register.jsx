@@ -1,22 +1,27 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { UserContext } from '../context/UserContext'
+import { useNavigate } from 'react-router-dom'
 //import { Banner } from '../components/Banner'
+
 function Register() {
+  const { register } = useContext(UserContext)
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value)
-  }
+  const navigate = useNavigate()
 
   function handleConfirmPassword(e) {
     setConfirmPassword(e.target.value)
   }
 
-  function checkInfo(e) {
+  async function checkInfo(e) {
     e.preventDefault()
 
     if (password === confirmPassword) {
-      alert('Has creado tu cuenta exitosamente')
+      console.log('tus contraseñas coinciden')
+      await register(email, password)
+      alert('registro exitoso')
+      navigate('/login')
     } else {
       alert('Verifica tus datos. Las contraseñas deben ser iguales.')
     }
@@ -33,9 +38,11 @@ function Register() {
             </label>
             <input
               type="email"
+              value={email}
               className="form-control"
               id="exampleFormControlInput1"
               placeholder="name@example.com"
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -48,7 +55,7 @@ function Register() {
               type="password"
               className="form-control"
               id="exampleInputPassword1"
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>

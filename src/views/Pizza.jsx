@@ -5,14 +5,24 @@ import { formatPrice } from '../components/format'
 import { CartContext } from '../context/CartContext' // Importar el contexto
 
 export default function Pizza() {
+  const { addToCart } = useContext(CartContext) // Solo necesitas las funciones aquí
   const [data, setData] = useState({})
   const [count, setCount] = useState(1)
   const { id } = useParams()
 
   const url = `http://localhost:5000/api/pizzas/${id}`
 
-  // Usar el contexto
-  const { addToCart } = useContext(CartContext)
+  // Función para incrementar la cantidad
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + count)
+  }
+
+  // Función para decrementar la cantidad
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount((prevCount) => prevCount - 1)
+    }
+  }
 
   useEffect(() => {
     async function getPizza() {
@@ -26,7 +36,10 @@ export default function Pizza() {
   }, [url])
 
   const handleAddToCart = () => {
+    // Agregar la pizza al carrito con la cantidad actual
     addToCart({ ...data, quantity: count })
+    // Resetear el conteo después de agregar al carrito
+    // Resetea el contador a 1 después de agregar
   }
 
   return (
@@ -47,14 +60,14 @@ export default function Pizza() {
           <div className="d-flex align-items-center">
             <button
               className="btn btn-secondary me-2"
-              onClick={() => setCount(count > 1 ? count - 1 : 1)}
+              onClick={handleDecrement}
             >
               -
             </button>
             <span className="fs-5">{count}</span>
             <button
               className="btn btn-secondary ms-2"
-              onClick={() => setCount(count + 1)}
+              onClick={handleIncrement}
             >
               +
             </button>

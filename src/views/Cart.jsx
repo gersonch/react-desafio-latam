@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserContext'
 
 export default function Cart() {
   const { cart, total, addToCart, decrement } = useContext(CartContext)
-  const { token } = useContext(UserContext) // Llama a useContext para token en el nivel superior
+  const { token } = useContext(UserContext)
   const [stylePay, setStylePay] = useState('btn btn-primary')
 
   const handleIncrement = (id) => {
@@ -18,7 +18,10 @@ export default function Cart() {
 
   const handleUser = () => {
     if (!token) {
-      setStylePay('btn btn-dark') // Agrega la clase "enabled" si hay un token
+      setStylePay('btn btn-dark')
+      alert('debes iniciar sesion para comprar')
+    } else {
+      alert('pago con exito')
     }
   }
 
